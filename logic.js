@@ -3,22 +3,22 @@
 // match on a flavor - the pack has the flavour you selected
 var mat_weight = 1;
 // relenvancy score - the flavour you selected is the highest ranked within its category for that kit, and more than 1
-var rel_weight = 2;
+var rel_weight = 1;
 // the weight of the intensity match 
-var val_weight = 2;
+var val_weight = 1;
 
-function relevancy_weights(category) {
+function relevancy_weights(category, weight) {
 	var max_value = Math.max.apply(Math, category);
 	return category.map(
 		function(tag) {
-			return ( tag > 1 && tag == max_value ) ? 1 * rel_weight : 0;
+			return ( tag > 1 && tag == max_value ) ? 1 * weight : 0;
 		})
 }
 
-function match_weights(category) {
+function match_weights(category, weight) {
 	return category.map(
 		function(tag) {
-			return tag > 0 ? 1 * mat_weight : 0;
+			return tag > 0 ? 1 * weight : 0;
 		})
 }
 
@@ -30,9 +30,9 @@ function score(weights, test) {
 	return sum;
 }
 
-function value_score(kit_value, test_value) {
+function value_score(kit_value, test_value, weight) {
 	//for value range 1-3
-	return test_value == 0 ? 0 : (2 - Math.abs(kit_value - test_value)) * val_weight;
+	return test_value == 0 ? 0 : (2 - Math.abs(kit_value - test_value)) * weight;
 }
 
 var kits = [
@@ -64,15 +64,16 @@ function get_result(test_input) {
 		for (var j = 0; j < kit.categories.length; j++) {
 			var category = kit.categories[j];
 
-			kit_rel_score += score(relevancy_weights(category), test_input.categories[j]);
-			kit_mat_score += score(match_weights(category), test_input.categories[j]);
+			kit_rel_score += score(relevancy_weights(category, test_input.relevancyWeight), test_input.categories[j]);
+			kit_mat_score += score(match_weights(category, test_input.flavourWeight), test_input.categories[j]);
 		};
 
 		for (var j = 0; j < kit.values.length; j++) {
-			kit_val_score += value_score(kit.values[j], test_input.values[j]);
+			kit_val_score += value_score(kit.values[j], test_input.values[j], test_input.intensityWeight);
 		};
 
 		result_array.push({
+			color: kit.color,
 			name: kit.name,
 			mat_score: kit_mat_score,
 			rel_score : kit_rel_score,

@@ -1,7 +1,9 @@
 body {
   padding: 40px 40px;
-  font-family: monospace;
+  font-size: 14px;
+  font-family: 'Open Sans', sans-serif;
   color: #565656;
+  -webkit-font-smoothing: antialiased;
 }
 
 td {
@@ -25,6 +27,14 @@ input {
 .left-align {
   text-align: left;
 }
+.float-left {
+  float: left;
+}
+
+.abril {
+  font-family: 'Abril Fatface', cursive;
+  letter-spacing: 0.03em;
+}
 
 table {
   border-collapse: separate;
@@ -41,4 +51,13 @@ table {
 
 #my-ctrl {
   display: inline-flex;
+}
+
+#weights {
+  margin-bottom: 10px;
+  font-style: italic;
+}
+
+#legend {
+  max-width: 750px;
 }

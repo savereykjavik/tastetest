@@ -7,7 +7,8 @@ var fireplace_sipper = {
 		[3,1,1,0],
 		[0,0,3,3]
 	],
-	values: [2]
+	values: [2],
+	color: '#CE8D6E'
 }
 
 var smoking_guns = {
@@ -19,7 +20,8 @@ var smoking_guns = {
 		[0,0,0,2],
 		[0,0,3,2]
 	],
-	values: [3]
+	values: [3],
+	color: '#C5C5C5'
 }
 
 var berry_bunch = {
@@ -31,7 +33,8 @@ var berry_bunch = {
 		[1,1,3,2],
 		[0,0,3,3]
 	],
-	values: [2]
+	values: [2],
+	color: '#ECAECB'
 }
 
 var liquid_dessert = {
@@ -43,7 +46,8 @@ var liquid_dessert = {
 		[3,2,2,0],
 		[0,2,0,3]
 	],
-	values: [1]
+	values: [1],
+	color: '#A2F1C1'
 }
 
 var day_at_the_ocean = {
@@ -55,7 +59,8 @@ var day_at_the_ocean = {
 		[2,0,0,1],
 		[0,3,0,1]
 	],
-	values: [3]
+	values: [3],
+	color: '#89E6D5'
 }
 
 var wild_wild_west = {
@@ -67,7 +72,8 @@ var wild_wild_west = {
 		[3,2,1,2],
 		[0,2,3,3]
 	],
-	values: [2]
+	values: [2],
+	color: '#EAD7A0'
 }
 
 var tropical_island = {
@@ -79,7 +85,8 @@ var tropical_island = {
 		[2,3,1,2],
 		[0,3,2,2]
 	],
-	values: [1]
+	values: [1],
+	color: 'pink'
 }
 
 var springtime_picknic = {
@@ -91,7 +98,8 @@ var springtime_picknic = {
 		[3,0,0,3],
 		[3,3,0,0]
 	],
-	values: [1]
+	values: [1],
+	color: '#54C554'
 }
 
 var exotic_exploration = {
@@ -103,7 +111,8 @@ var exotic_exploration = {
 		[0,3,1,2],
 		[2,3,2,0]
 	],
-	values: [3]
+	values: [3],
+	color: '#FF8091'
 }
 
 var mediterranean_flavours = {
@@ -115,7 +124,8 @@ var mediterranean_flavours = {
 		[0,0,0,2],
 		[3,2,0,0]
 	],
-	values: [2]
+	values: [2],
+	color: '#729EFF'
 }
 
 var russian_roulette = {
@@ -127,7 +137,8 @@ var russian_roulette = {
 		[2,0,0,1],
 		[0,3,0,3]
 	],
-	values: [1]
+	values: [1],
+	color: '#E8E5E5'
 }
 
 var earth_and_salt = {
@@ -139,5 +150,6 @@ var earth_and_salt = {
 		[0,1,0,2],
 		[0,3,2,0]
 	],
-	values: [3]
+	values: [3],
+	color: '#CABB84'
 }
