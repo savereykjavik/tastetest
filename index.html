@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Logic test</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+<script src="kits.js"></script>
+<script src="logic.js"></script>
+
+  <!-- css -->
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+
+<body>
+
+
+    <!-- angular -->
+    <div ng-app="myApp" >
+
+      <div id="my-ctrl" ng-controller="myCtrl">
+
+    	<div ng-repeat="tag in tags">
+    		<label><input type="checkbox" ng-model="checked[$index]">{{tag}}</label>
+    	</div>
+
+    	<label>Intensity (1-3)<input type="number" id="intensity" min="1" max="3"></label>
+    </br>
+	</br>
+
+    	<button ng-click="getScore()">Get kits!</button>
+    </br>
+	</br>
+</br>
+
+        <div id="result">
+	      	<table>
+	      		<tr>
+	          		<th class="left-align">Kit</th>
+	            	<th>Total Score</th>
+	            	<th>Flavours matched</th>
+	            	<th>Relevancy match</th>
+	            	<th>Intensity match</th>
+	      		</tr>
+	      		<tr ng-repeat="kit in kits">
+		      		<td class="left-align">{{kit.name}}</td>
+		        	<td>{{kit.sum_score}}</td>
+		        	<td>{{kit.mat_score}}</td>
+		        	<td>{{kit.rel_score}}</td>
+		        	<td>{{kit.val_score}}</td>
+	      		</tr>
+	      	</table>
+        <div>
+
+      </div>
+    <div>
+    <!-- end angular -->
+
+    <script language="javascript">
+
+    var flavourTags = [
+		"Sweet",
+		"Salty",
+		"Sour",
+		"Bitter",
+		"Herbal",
+		"Spicy",
+		"Peppery",
+		"Exotic",
+		"Fire",
+		"Flowers",
+		"Ocean",
+		"Earthy",
+		"Summer Fruit",
+		"Exotic Fruit",
+		"Berry Fruits",
+		"Citrus Fruits",
+		"Spring",
+		"Summer",
+		"Autumn",
+		"Winter"
+	]
+
+		function compareScore(kitA, kitB) {
+		  return kitB.sum_score - kitA.sum_score;
+		}
+
+	  // ======= angular things ===================================================================
+
+	  function initScope($scope) {
+	    $scope.tags = flavourTags;
+	    $scope.checked = [];
+
+	    $scope.getScore = function() {
+	    	input = {
+	    		categories: [[],[],[],[],[]],
+	    		values: []
+	    	};
+
+	    	for (var i = 0; i < flavourTags.length; i++) {
+	    		input.categories[Math.floor(i/4)][i%4] = !!$scope.checked[i] ? 1 : 0;
+	    	};
+
+	    	var intensity_value = parseInt(document.getElementById('intensity').value)
+	    	isNaN(intensity_value) ? input.values[0] = 0 : input.values[0] = intensity_value;
+
+	    	$scope.kits = get_result(input).sort(compareScore);
+	    };
+	  }
+
+	  function updateAngular() {
+	    angular.element(document.getElementById("my-ctrl"))
+	      .scope().$apply(initScope);
+	  }
+
+	  var app = angular.module('myApp', []);
+	  app.controller('myCtrl', initScope);
+
+	</script>
+
+</body>
+
+</html>
